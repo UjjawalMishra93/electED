@@ -1,0 +1,17 @@
+.page { padding-bottom:80px; }
+.header { background:linear-gradient(135deg,#1F2937,#111827); color:white; padding:40px 0 32px; }
+.header h1 { color:white; margin-bottom:6px; }
+.header p { color:rgba(255,255,255,0.7); }
+.restricted { text-align:center; padding:100px 24px; }
+.restricted h1 { margin-bottom:12px; }
+.statsGrid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
+@media(max-width:900px){.statsGrid{grid-template-columns:repeat(2,1fr);}}
+.statCard { padding:24px; text-align:center; }
+.statValue { font-size:2rem; font-weight:800; color:var(--primary); }
+.statLabel { font-size:0.8rem; color:var(--text-muted); margin:4px 0; }
+.statChange { font-size:0.78rem; font-weight:600; color:var(--secondary); }
+.topQCard { padding:28px; }
+.topQCard h2 { margin-bottom:16px; }
+.topQList { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.topQList li { display:flex; align-items:center; gap:12px; font-size:0.9rem; color:var(--text-secondary); padding:10px; border-radius:var(--radius-md); background:var(--surface); }
+.rank { width:28px; height:28px; border-radius:50%; background:var(--primary); color:white; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0; }

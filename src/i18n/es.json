@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "chat": "Asistente IA",
+    "timeline": "Cronología Electoral",
+    "register": "Registrarse para Votar",
+    "quiz": "Cuestionario Cívico",
+    "explore": "Explorar Boleta",
+    "settings": "Configuración",
+    "admin": "Administrador"
+  },
+  "hero": {
+    "badge": "Impulsado por Google Gemini IA",
+    "title": "Entiende Cada Paso del",
+    "titleHighlight": "Proceso Electoral",
+    "subtitle": "ElectEd es tu compañero cívico impulsado por IA. Obtén respuestas claras e imparciales sobre votación, candidatos y cómo funciona la democracia — en lenguaje sencillo.",
+    "ctaChat": "Preguntarle a ElectEd IA",
+    "ctaTimeline": "Ver Cronología Electoral",
+    "trustLine": "Confiable, imparcial, respaldado por fuentes verificadas"
+  },
+  "features": {
+    "title": "Todo lo que Necesitas para Estar",
+    "titleHighlight": "Informado Cívicamente",
+    "chat": {
+      "title": "Asistente de Chat IA",
+      "desc": "Pregunta cualquier cosa sobre el proceso electoral. Obtén respuestas instantáneas y verificadas impulsadas por Gemini IA."
+    },
+    "timeline": {
+      "title": "Cronología Interactiva",
+      "desc": "Explora cada etapa de las elecciones — desde las primarias hasta la inauguración — con detalles interactivos."
+    },
+    "register": {
+      "title": "Guía de Registro para Votar",
+      "desc": "Encuentra requisitos específicos por estado, fechas límite e instrucciones paso a paso para registrarte."
+    },
+    "quiz": {
+      "title": "Cuestionarios de Conocimiento Cívico",
+      "desc": "Pon a prueba tu conocimiento y gana insignias. Más de 50 preguntas en 5 categorías cívicas."
+    }
+  },
+  "chat": {
+    "title": "Asistente IA de ElectEd",
+    "subtitle": "Imparcial • Fuentes verificadas • Impulsado por Google Gemini",
+    "placeholder": "Pregunta sobre votación, elecciones, candidatos...",
+    "send": "Enviar",
+    "thinking": "ElectEd está pensando...",
+    "disclaimer": "ElectEd IA solo proporciona información cívica imparcial. Siempre verifica con fuentes oficiales.",
+    "suggested": {
+      "title": "Preguntas Rápidas",
+      "q1": "¿Cómo me registro para votar?",
+      "q2": "¿Qué es el Colegio Electoral?",
+      "q3": "¿Cuándo es el Día de las Elecciones?",
+      "q4": "¿Qué es una elección primaria?",
+      "q5": "¿Cómo se cuentan los votos?",
+      "q6": "¿Qué identificación necesito para votar?"
+    }
+  },
+  "timeline": {
+    "title": "Cronología Electoral de EE.UU.",
+    "subtitle": "Explora cada etapa del proceso democrático",
+    "currentStage": "Etapa Actual",
+    "completed": "Completado",
+    "upcoming": "Próximo",
+    "citizenActions": "¿Qué Puedes Hacer?",
+    "keyActors": "Actores Clave",
+    "shareStage": "Compartir Esta Etapa"
+  },
+  "register": {
+    "title": "Guía de Registro para Votar",
+    "subtitle": "Encuentra requisitos y fechas límite de registro para tu estado",
+    "selectState": "Selecciona Tu Estado",
+    "checkRegistration": "Verificar Mi Registro",
+    "registerNow": "Registrarme Ahora",
+    "deadline": "Fecha Límite de Registro",
+    "earlyVoting": "Votación Anticipada",
+    "idRequired": "Requisitos de Identificación"
+  },
+  "quiz": {
+    "title": "Cuestionario de Conocimiento Cívico",
+    "subtitle": "Pon a prueba tu conocimiento y gana insignias de logros",
+    "categories": {
+      "voting-process": "Proceso de Votación",
+      "electoral-system": "Sistema Electoral",
+      "rights-responsibilities": "Derechos y Responsabilidades",
+      "election-history": "Historia Electoral",
+      "how-government-works": "Cómo Funciona el Gobierno"
+    },
+    "startQuiz": "Iniciar Cuestionario",
+    "nextQuestion": "Siguiente Pregunta",
+    "viewResults": "Ver Resultados",
+    "shareResults": "Compartir Resultados",
+    "score": "Tu Puntuación",
+    "correct": "Correcto",
+    "incorrect": "Incorrecto",
+    "explanation": "Explicación",
+    "badges": "Tus Insignias"
+  },
+  "settings": {
+    "title": "Configuración y Preferencias",
+    "fontSize": "Tamaño del Texto",
+    "fontSizeNormal": "Normal",
+    "fontSizeLarge": "Grande",
+    "fontSizeXL": "Extra Grande",
+    "highContrast": "Modo de Alto Contraste",
+    "language": "Idioma",
+    "notifications": "Recordatorios Electorales",
+    "notificationsDesc": "Recibe notificaciones sobre fechas límite de registro y fechas electorales"
+  },
+  "footer": {
+    "tagline": "Potenciando la educación cívica a través de la IA",
+    "nonPartisan": "Imparcial • Fuentes verificadas • Gratis para todos",
+    "sources": "Fuentes: USA.gov, Vote.gov, Ballotpedia",
+    "copyright": "© 2026 ElectEd. Construido para la educación cívica."
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal. Por favor inténtalo de nuevo.",
+    "back": "Volver",
+    "close": "Cerrar",
+    "share": "Compartir",
+    "learnMore": "Aprender Más",
+    "source": "Fuente"
+  }
+}

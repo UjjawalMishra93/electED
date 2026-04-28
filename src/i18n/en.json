@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Home",
+    "chat": "AI Assistant",
+    "timeline": "Election Timeline",
+    "register": "Register to Vote",
+    "quiz": "Civic Quiz",
+    "explore": "Explore Ballot",
+    "settings": "Settings",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "Powered by Google Gemini AI",
+    "title": "Understand Every Step of the",
+    "titleHighlight": "Election Process",
+    "subtitle": "ElectEd is your AI-powered civic companion. Get clear, non-partisan answers about voting, candidates, and how democracy works — in plain language.",
+    "ctaChat": "Ask ElectEd AI",
+    "ctaTimeline": "View Election Timeline",
+    "trustLine": "Trusted, non-partisan, powered by verified sources"
+  },
+  "features": {
+    "title": "Everything You Need to Be",
+    "titleHighlight": "Civically Informed",
+    "chat": {
+      "title": "AI Chat Assistant",
+      "desc": "Ask anything about the election process. Get instant, verified, non-partisan answers powered by Gemini AI."
+    },
+    "timeline": {
+      "title": "Interactive Timeline",
+      "desc": "Explore every stage of the election — from primaries to inauguration — with interactive details."
+    },
+    "register": {
+      "title": "Voter Registration Guide",
+      "desc": "Find state-specific requirements, deadlines, and step-by-step registration instructions."
+    },
+    "quiz": {
+      "title": "Civic Knowledge Quizzes",
+      "desc": "Test your knowledge and earn badges. 50+ questions across 5 civics categories."
+    }
+  },
+  "chat": {
+    "title": "ElectEd AI Assistant",
+    "subtitle": "Non-partisan • Verified sources • Powered by Google Gemini",
+    "placeholder": "Ask about voting, elections, candidates...",
+    "send": "Send",
+    "thinking": "ElectEd is thinking...",
+    "disclaimer": "ElectEd AI provides non-partisan civic information only. Always verify with official sources.",
+    "suggested": {
+      "title": "Quick Questions",
+      "q1": "How do I register to vote?",
+      "q2": "What is the Electoral College?",
+      "q3": "When is Election Day?",
+      "q4": "What is a primary election?",
+      "q5": "How are votes counted?",
+      "q6": "What ID do I need to vote?"
+    }
+  },
+  "timeline": {
+    "title": "US Election Timeline",
+    "subtitle": "Explore every stage of the democratic process",
+    "currentStage": "Current Stage",
+    "completed": "Completed",
+    "upcoming": "Upcoming",
+    "citizenActions": "What Can You Do?",
+    "keyActors": "Key Actors",
+    "shareStage": "Share This Stage"
+  },
+  "register": {
+    "title": "Voter Registration Guide",
+    "subtitle": "Find registration requirements and deadlines for your state",
+    "selectState": "Select Your State",
+    "checkRegistration": "Check My Registration",
+    "registerNow": "Register Now",
+    "deadline": "Registration Deadline",
+    "earlyVoting": "Early Voting",
+    "idRequired": "ID Requirements"
+  },
+  "quiz": {
+    "title": "Civic Knowledge Quiz",
+    "subtitle": "Test your knowledge and earn achievement badges",
+    "categories": {
+      "voting-process": "Voting Process",
+      "electoral-system": "Electoral System",
+      "rights-responsibilities": "Rights & Responsibilities",
+      "election-history": "Election History",
+      "how-government-works": "How Government Works"
+    },
+    "startQuiz": "Start Quiz",
+    "nextQuestion": "Next Question",
+    "viewResults": "View Results",
+    "shareResults": "Share Results",
+    "score": "Your Score",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "explanation": "Explanation",
+    "badges": "Your Badges"
+  },
+  "settings": {
+    "title": "Settings & Preferences",
+    "fontSize": "Text Size",
+    "fontSizeNormal": "Normal",
+    "fontSizeLarge": "Large",
+    "fontSizeXL": "Extra Large",
+    "highContrast": "High Contrast Mode",
+    "language": "Language",
+    "notifications": "Election Reminders",
+    "notificationsDesc": "Get notified about registration deadlines and election dates"
+  },
+  "footer": {
+    "tagline": "Empowering civic education through AI",
+    "nonPartisan": "Non-partisan • Verified sources • Free for everyone",
+    "sources": "Sources: USA.gov, Vote.gov, Ballotpedia",
+    "copyright": "© 2026 ElectEd. Built for civic education."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "back": "Back",
+    "close": "Close",
+    "share": "Share",
+    "learnMore": "Learn More",
+    "source": "Source"
+  }
+}

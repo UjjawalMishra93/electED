@@ -1,0 +1,13 @@
+.page { padding-bottom: 80px; }
+.header { background: linear-gradient(135deg,#374151,#1F2937); color:white; padding:40px 0 32px; }
+.header h1 { color:white; }
+.settingsGrid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+@media(max-width:768px){.settingsGrid{grid-template-columns:1fr;}}
+.settingCard { padding:28px; }
+.settingHeader { display:flex; align-items:center; gap:10px; margin-bottom:16px; color:var(--primary); }
+.settingHeader h2 { font-size:1rem; color:var(--text-primary); }
+.options { display:flex; gap:8px; flex-wrap:wrap; }
+.option { padding:8px 18px; border-radius:var(--radius-md); border:1.5px solid var(--border); background:var(--surface); font-size:0.875rem; font-weight:500; font-family:inherit; cursor:pointer; color:var(--text-secondary); transition:all var(--transition); }
+.option:hover { border-color:var(--primary); color:var(--primary); }
+.optionActive { border-color:var(--primary)!important; background:var(--primary-light)!important; color:var(--primary)!important; font-weight:700!important; }
+.settingDesc { font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5; }

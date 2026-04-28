@@ -1,0 +1,187 @@
+.page { padding-bottom: 80px; }
+
+.header {
+  padding: 120px 0 60px;
+  margin-bottom: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.header h1 { margin-bottom: 16px; font-size: clamp(2.5rem, 5vw, 3.5rem); }
+.header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+.content { display: flex; flex-direction: column; gap: 32px; position: relative; z-index: 10; }
+
+.selectorCard { 
+  padding: 32px; 
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.4));
+  border: 1px solid var(--border-highlight);
+}
+
+.selectorCard h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: var(--primary-light);
+}
+
+.stateSelect { 
+  max-width: 400px; 
+  font-size: 1rem; 
+  background: rgba(0,0,0,0.3);
+  padding: 14px 16px;
+}
+
+.stateSelect:focus {
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) { .infoGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .infoGrid { grid-template-columns: 1fr; } }
+
+.infoCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition);
+}
+
+.infoCard:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-4px);
+}
+
+.infoCardIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.infoCard h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+.infoCard p { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
+
+.actionCard { 
+  padding: 40px; 
+  text-align: center;
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.05), transparent);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.actionCard h2 { margin-bottom: 12px; font-size: 1.5rem; }
+.actionCard > p { margin-bottom: 32px; color: var(--text-secondary); }
+
+.actionBtns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  background: rgba(0,0,0,0.3);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.stepsCard { padding: 40px; }
+.stepsCard h2 { margin-bottom: 32px; font-size: 1.5rem; }
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.stepNum {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.step h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text-primary); }
+.step p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}

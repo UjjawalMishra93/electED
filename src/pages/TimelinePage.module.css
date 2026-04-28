@@ -1,0 +1,306 @@
+.page { padding-bottom: 80px; }
+
+.header {
+  padding: 120px 0 60px;
+  margin-bottom: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.header h1 { margin-bottom: 16px; font-size: clamp(2.5rem, 5vw, 3.5rem); }
+.header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+.progressBar {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+}
+
+.progressTrack {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), var(--primary-light));
+  border-radius: var(--radius-full);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progressLabels {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 0;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.timelineContainer { margin-top: 0; padding-top: 40px; max-width: 800px; margin: 0 auto; }
+
+.timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 40px;
+}
+
+.stageItem {
+  display: flex;
+  gap: 24px;
+  position: relative;
+}
+
+.connector {
+  position: absolute;
+  left: 23px;
+  top: 48px;
+  bottom: -16px;
+  width: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.connectorDone {
+  background: linear-gradient(to bottom, var(--secondary), var(--border));
+}
+
+.stageIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+  margin-top: 16px;
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  transition: all var(--transition);
+}
+
+.icon_completed {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: white;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+.icon_active {
+  background: transparent;
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+.icon_active::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-light);
+  animation: pulse-ring 2s infinite;
+}
+
+.icon_upcoming {
+  color: var(--text-muted);
+}
+
+.stageCard {
+  flex: 1;
+  margin: 16px 0;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.4));
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition);
+}
+
+.stageCard:hover {
+  border-color: var(--border-highlight);
+  transform: translateX(4px);
+}
+
+.stageCardActive {
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6));
+}
+
+.stageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+
+.stageHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.stageEmoji { font-size: 1.8rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+
+.stageMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.stageDate {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stageName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.stageContent {
+  padding: 0 24px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.stageDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 20px 0 24px;
+}
+
+.stageDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 24px;
+  background: rgba(0,0,0,0.2);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 600px) {
+  .stageDetails { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.detailSection h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.detailSection ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailSection ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.stageFooter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+}

@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding-top: 0; /* Navbar is floating, sections handle their own padding */
+  outline: none; /* Remove focus ring on programmatic focus */
+}

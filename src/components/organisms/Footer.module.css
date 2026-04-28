@@ -1,0 +1,122 @@
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: auto;
+}
+
+.inner {
+  display: flex;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  flex: 1;
+  min-width: 200px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: var(--radius-md);
+  color: white;
+}
+
+.logoText {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: white;
+}
+
+.logoAccent {
+  color: #60A5FA;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.nonPartisan {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.linksGrid {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.linkHeading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 0;
+}
+
+.bottomBar > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bottomBar p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+}
+
+.sources {
+  font-size: 0.75rem !important;
+}
