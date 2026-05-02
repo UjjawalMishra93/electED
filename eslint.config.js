@@ -1,38 +1,50 @@
 import js from '@eslint/js'
 import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import reactPlugin from 'eslint-plugin-react'
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import prettierPlugin from 'eslint-plugin-prettier'
+import tsPlugin from '@typescript-eslint/eslint-plugin'
 
 export default defineConfig([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommendedTypeChecked,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-      'plugin:react/recommended',
-      'plugin:jsx-a11y/recommended',
-      'plugin:prettier/recommended',
-    ],
-    plugins: {
-      react: {},
-      'jsx-a11y': {},
-    },
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
+      },
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
+        ecmaVersion: 'latest',
+        sourceType: 'module',
       },
     },
+    plugins: {
+      react: reactPlugin,
+      'jsx-a11y': jsxA11yPlugin,
+      'react-hooks': reactHooksPlugin,
+      'prettier': prettierPlugin,
+      '@typescript-eslint': tsPlugin,
+    },
+    extends: [
+      js.configs.recommended,
+      tsPlugin.configs['flat/recommended-type-checked'],
+      reactPlugin.configs.flat.recommended,
+      jsxA11yPlugin.configs.recommended,
+      reactHooksPlugin.configs.flat.recommended,
+    ],
     settings: {
       react: {
         version: 'detect',
       },
+    },
+    rules: {
+      'prettier/prettier': 'error',
     },
   },
 ])
