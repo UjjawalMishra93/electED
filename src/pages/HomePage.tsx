@@ -9,10 +9,10 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
+import { useElectionFacts } from '@/services/electionFacts';
 import styles from './HomePage.module.css';
 
 const HomePage: React.FC = () => {
-
   return (
     <div className={styles.page}>
       {/* Dynamic Background Glows */}
@@ -53,6 +53,8 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <ElectionFactsSection />
 
       {/* ── Bento Box Features ─────────────────────────────────────── */}
       <section className={`section-padding ${styles.bentoSection}`} aria-label="Features">
@@ -128,5 +130,42 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
+
+function ElectionFactsSection() {
+  const { data: facts, isLoading, isError } = useElectionFacts();
+
+  return (
+    <section className={`section-padding ${styles.factsSection}`} aria-labelledby="facts-heading">
+      <div className="section-container">
+        <div className={styles.factsHeader}>
+          <h2 id="facts-heading">Verified Election Facts</h2>
+          <p>Learn from the latest civic data the app retrieves directly from the Firestore knowledge base.</p>
+        </div>
+
+        {isLoading && <p>Loading verified facts…</p>}
+        {isError && <p>Unable to load facts right now. Please try again later.</p>}
+
+        {facts?.length ? (
+          <div className={styles.factsGrid}>
+            {facts.map((fact) => (
+              <article key={fact.id} className={`card ${styles.factCard}`} aria-label={`Fact about ${fact.topic}`}>
+                <h3>{fact.topic}</h3>
+                <p>{fact.content}</p>
+                <a
+                  href={fact.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.factSource}
+                >
+                  Source: {fact.source}
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+}
 
 export default HomePage;

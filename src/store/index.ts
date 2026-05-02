@@ -48,7 +48,7 @@ interface ChatStore {
   isLoading: boolean;
   sessionId: string;
   addMessage: (message: ChatMessage) => void;
-  updateLastMessage: (content: string) => void;
+  updateLastMessage: (content: string, sources?: ChatMessage['sources']) => void;
   setLoading: (loading: boolean) => void;
   toggleChat: () => void;
   openChat: () => void;
@@ -65,12 +65,17 @@ export const useChatStore = create<ChatStore>()((set) => ({
   sessionId: generateSessionId(),
   addMessage: (message) =>
     set((state) => ({ messages: [...state.messages, message] })),
-  updateLastMessage: (content) =>
+  updateLastMessage: (content, sources) =>
     set((state) => {
       const messages = [...state.messages];
       const last = messages[messages.length - 1];
       if (last && last.role === 'assistant') {
-        messages[messages.length - 1] = { ...last, content, isStreaming: false };
+        messages[messages.length - 1] = {
+          ...last,
+          content,
+          isStreaming: false,
+          ...(sources ? { sources } : {}),
+        };
       }
       return { messages };
     }),

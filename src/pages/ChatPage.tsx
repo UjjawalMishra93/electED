@@ -5,6 +5,8 @@ import {
   Send, AlertCircle, RefreshCw, Bot, User as UserIcon,
 } from 'lucide-react';
 import DOMPurify from 'dompurify';
+import { logEvent } from 'firebase/analytics';
+import { analytics } from '@/services/firebase';
 import { useChatStore } from '@/store';
 import type { ChatMessage, Source } from '@/types';
 import styles from './ChatPage.module.css';
@@ -84,9 +86,22 @@ const ChatPage: React.FC = () => {
     addMessage(userMsg);
     setLoading(true);
 
+    if (analytics) {
+      logEvent(analytics, 'chat_message_sent', {
+        length: sanitized.length,
+        hasHistory: messages.length > 0,
+      });
+    }
+
+    const chatApiUrl =
+      process.env.VITE_CHAT_FUNCTION_URL ||
+      (process.env.NODE_ENV !== 'production'
+        ? 'http://127.0.0.1:5001/elected-hackathon/us-central1/chat'
+        : '/api/chat');
+
     // Streaming response from Cloud Function (SSE)
     try {
-      const response = await fetch('http://127.0.0.1:5001/elected-hackathon/us-central1/chat', {
+      const response = await fetch(chatApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: sanitized, stream: true }),
@@ -134,7 +149,7 @@ const ChatPage: React.FC = () => {
               if (parsed.error) throw new Error(parsed.error);
               if (parsed.delta) {
                 accumulated += parsed.delta;
-                updateLastMessage(accumulated);
+                updateLastMessage(accumulated, sources);
               }
               if (parsed.done) {
                 sources = parsed.sources ?? [];
@@ -143,18 +158,7 @@ const ChatPage: React.FC = () => {
           }
         }
         // Finalize the streamed message with sources
-        updateLastMessage(accumulated);
-        // Patch sources into the last message via a re-add trick:
-        const finalMsg: ChatMessage = {
-          id: `msg_${Date.now() + 2}`,
-          role: 'assistant',
-          content: accumulated,
-          timestamp: new Date(),
-          sources,
-          isStreaming: false,
-        };
-        // Clear streaming flag — handled by updateLastMessage in store
-        void finalMsg;
+        updateLastMessage(accumulated, sources);
       } else {
         // ── Non-streaming JSON fallback ────────────────────────────────
         const data = await response.json() as { content: string; sources?: Source[] };
@@ -169,6 +173,12 @@ const ChatPage: React.FC = () => {
       }
     } catch (error) {
       console.error('Chat API Error, falling back to mock:', error);
+      if (analytics) {
+        logEvent(analytics, 'chat_api_error', {
+          messageLength: sanitized.length,
+          error: error instanceof Error ? error.message : 'unknown',
+        });
+      }
       await new Promise<void>((resolve) => setTimeout(resolve, 1000 + Math.random() * 600));
       const { content, sources } = getMockResponse(sanitized);
       const aiMsg: ChatMessage = {

@@ -76,6 +76,26 @@ async function verifyAuthToken(authHeader: string | undefined): Promise<admin.au
   }
 }
 
+async function recordChatLog(
+  userId: string,
+  prompt: string,
+  responseText: string,
+  offTopic: boolean,
+): Promise<void> {
+  try {
+    await db.collection('chat_logs').add({
+      userId,
+      prompt,
+      response: responseText,
+      offTopic,
+      model: 'gemini-1.5-pro',
+      createdAt: admin.firestore.Timestamp.now(),
+    });
+  } catch (err) {
+    console.warn('Unable to persist chat log:', err);
+  }
+}
+
 // ─── RAG: Retrieve election facts from Firestore ──────────────────────────────
 async function retrieveRelevantFacts(query: string): Promise<string> {
   try {
@@ -178,11 +198,15 @@ export const chat = onRequest(
 
         // 4. Off-topic / Harmful Query Detection
         if (isOffTopic(cleanPrompt)) {
+          const reply =
+            "I'm ElectEd, a civic education assistant focused on US elections and voting. " +
+            "I can't help with that topic, but I'd love to answer questions about voter " +
+            'registration, the Electoral College, voting processes, or civics in general!';
+
+          await recordChatLog(userId, cleanPrompt, reply, true);
+
           res.status(200).json({
-            content:
-              "I'm ElectEd, a civic education assistant focused on US elections and voting. " +
-              "I can't help with that topic, but I'd love to answer questions about voter " +
-              'registration, the Electoral College, voting processes, or civics in general!',
+            content: reply,
             sources: [{ label: 'Vote.gov', url: 'https://vote.gov' }],
             offTopic: true,
           });
@@ -230,12 +254,16 @@ ${ragContext || 'No specific context retrieved. Use your general civic education
               config: { systemInstruction, temperature: 0.2 },
             });
 
+            let streamText = '';
             for await (const chunk of streamResponse) {
               const delta = chunk.text ?? '';
               if (delta) {
+                streamText += delta;
                 res.write(`data: ${JSON.stringify({ delta })}\n\n`);
               }
             }
+
+            await recordChatLog(userId, cleanPrompt, streamText.trim(), false);
 
             // End event with sources
             res.write(
@@ -265,6 +293,8 @@ ${ragContext || 'No specific context retrieved. Use your general civic education
         const text =
           response.text ??
           'I apologize, but I could not generate a response. Please try again.';
+
+        await recordChatLog(userId, cleanPrompt, text, false);
 
         res.status(200).json({
           content: text,
